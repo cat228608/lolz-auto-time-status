@@ -12,7 +12,7 @@ cookies = {
     'G_ENABLED_IDPS': '',
     'xf_tfa_trust': '',
     'xf_user': '',
-    'xf_logged_in': '1',
+    'xf_logged_in': '',
     'xf_market_search_bar': '',
     'xf_viewedContestsHidden': '',
     'xf_feed_custom_order': '',
@@ -49,17 +49,20 @@ token_pars_step_two = token_pars.split('",')[0]
 print(token_pars_step_two)
 
 while True:
-    now = datetime.datetime.today()
-    NY = datetime.datetime(2023, 1, 1)
-    d = NY-now  
-    mm, ss = divmod(d.seconds, 60)
-    hh, mm = divmod(mm, 60)
-    data = {
-    'custom_title': f'До НГ: {d.days} дней, {hh} часов, {mm} минут',
-    '_xfRequestUri': f'/{username}/',
-    '_xfNoRedirect': '1',
-    '_xfToken': f'{token_pars_step_two}',
-    '_xfResponseType': 'json',
-    }
-    status_update = requests.post(f'https://zelenka.guru/account/status-update', cookies=cookies, headers=headers, data=data) 
-    time.sleep(times)
+    try:
+        now = datetime.datetime.today()
+        NY = datetime.datetime(2024, 1, 1)
+        d = NY-now  
+        mm, ss = divmod(d.seconds, 60)
+        hh, mm = divmod(mm, 60)
+        data = {
+        'custom_title': f'До 2024: {d.days} дней, {hh} часов, {mm} минут',
+        '_xfRequestUri': f'/{username}/',
+        '_xfNoRedirect': '1',
+        '_xfToken': f'{token_pars_step_two}',
+        '_xfResponseType': 'json',
+        }
+        status_update = requests.post(f'https://zelenka.guru/account/status-update', cookies=cookies, headers=headers, data=data) 
+        time.sleep(times)
+    except:
+        continue
