@@ -45,7 +45,7 @@ htmlparser = etree.HTMLParser()
 tree = etree.XML(html,htmlparser)
 check = tree.xpath(f'//html/body/script[1]/text()')[0]
 token_pars = check.split('_csrfToken: "')[1]
-token_pars_step_two = token_pars.split('",')[0]
+token_pars_step_two = token_pars.split('",')[0] #Мне похуй на 14 февраля, я люблю тебя каждый день! (Посвящается Анечке)
 print(token_pars_step_two)
 
 while True:
